@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import {
-  selectVisualContacts,
+  selectVisibleContacts,
   selectIsLoading,
 } from 'redux/contacts/selectors';
 
@@ -12,7 +12,7 @@ import icon from '../../images/addressBook.svg';
 
 export const ContactList = () => {
   const isLoading = useSelector(selectIsLoading);
-  const visualContacts = useSelector(selectVisualContacts);
+  const visualContacts = useSelector(selectVisibleContacts);
   const dispatch = useDispatch();
 
   const handleClick = contactId => {
