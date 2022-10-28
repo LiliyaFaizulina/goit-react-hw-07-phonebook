@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
 import {
   selectVisibleContacts,
   selectIsLoading,
@@ -17,9 +16,6 @@ export const ContactList = () => {
 
   const handleClick = contactId => {
     dispatch(deleteContact(contactId));
-    if (!isLoading) {
-      toast.warn(`Contact deleted!`);
-    }
   };
 
   return (

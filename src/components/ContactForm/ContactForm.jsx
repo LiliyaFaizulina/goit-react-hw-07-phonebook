@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { Form, FormButton, Label } from './ContactForm.styled';
 import { addContact } from 'redux/contacts/operations';
-import { selectContacts, selectIsLoading } from 'redux/contacts/selectors';
+import { selectContacts } from 'redux/contacts/selectors';
 
 const nameCheckMessage =
   "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan";
@@ -14,7 +14,6 @@ export const ContactForm = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
   const handleInput = e => {
@@ -41,9 +40,6 @@ export const ContactForm = () => {
     }
 
     dispatch(addContact({ name, phone }));
-    if (!isLoading) {
-      toast.success(`${name} added in contacts`);
-    }
 
     setName('');
     setPhone('');
